@@ -4,20 +4,20 @@ import (
 	"errors"
 	"log"
 
-	"github.com/bygui86/go-protobuf/example"
+	"github.com/bygui86/go-protobuf/domain"
 	"github.com/golang/protobuf/proto"
 )
 
 func main() {
 	// Test to be marshalled
-	marshalTest := &example.Test{
+	marshalTest := &domain.Test{
 		Label: proto.String("hello"),
 		Type:  proto.Int32(17),
 		Reps:  []int64{1, 2, 3},
-		Optionalgroup: &example.Test_OptionalGroup{
+		Optionalgroup: &domain.Test_OptionalGroup{
 			RequiredField: proto.String("good bye"),
 		},
-		Union: &example.Test_Name{"fred"},
+		Union: &domain.Test_Name{"fred"},
 	}
 
 	// Marshalling
@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// Test to contain unmarshalled data
-	unmarshalTest := &example.Test{}
+	unmarshalTest := &domain.Test{}
 
 	// Unmarshalling
 	unmarshalErr := proto.Unmarshal(marshalledData, unmarshalTest)
@@ -45,9 +45,9 @@ func main() {
 
 	// Use a type switch to determine which oneof was set.
 	switch oneofType := marshalTest.Union.(type) {
-	case *example.Test_Number: // marshalTest.Union.Number contains the number.
+	case *domain.Test_Number: // marshalTest.Union.Number contains the number.
 		log.Println("oneof union contains a number:", oneofType.Number)
-	case *example.Test_Name: // marshalTest.Union.Name contains the string.
+	case *domain.Test_Name: // marshalTest.Union.Name contains the string.
 		log.Println("oneof union contains a name:", oneofType.Name)
 	default:
 		log.Fatalln("oneof union type not recognized")

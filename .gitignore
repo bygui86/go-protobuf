@@ -56,3 +56,6 @@ Thumbs.db
 ########### Project specific
 vendor/*
 !vendor/.gitkeep
+
+########### ProtoBuf generated
+*.pb.go

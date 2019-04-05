@@ -4,7 +4,11 @@
 ## Instructions
 
 1. compile protobuf files
-	`protoc *.proto --go_out=.`
+	```
+	cd protos/
+	protoc *.proto --go_out=../domain
+	cd -
+	```
 
 2. run the sample
 	`go run main.go`
