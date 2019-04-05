@@ -5,9 +5,7 @@
 
 1. compile protobuf files
 	```
-	cd protos/
-	protoc *.proto --go_out=../domain
-	cd -
+	protoc protos/ --go_out=./domain
 	```
 
 2. run the sample
