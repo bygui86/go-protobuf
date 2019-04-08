@@ -44,11 +44,11 @@ func main() {
 	}
 
 	// Use a type switch to determine which oneof was set.
-	switch oneofType := marshalTest.Union.(type) {
+	switch oneOfType := unmarshalTest.Union.(type) {
 	case *domain.Test_Number: // marshalTest.Union.Number contains the number.
-		log.Println("oneof union contains a number:", oneofType.Number)
+		log.Println("oneof union contains a number:", oneOfType.Number)
 	case *domain.Test_Name: // marshalTest.Union.Name contains the string.
-		log.Println("oneof union contains a name:", oneofType.Name)
+		log.Println("oneof union contains a name:", oneOfType.Name)
 	default:
 		log.Fatalln("oneof union type not recognized")
 		panic(errors.New("oneof union type not recognized"))
