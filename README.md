@@ -9,4 +9,6 @@
 	```
 
 2. run the sample
-	`go run main.go`
+	```shell
+	go run main.go
+    ```
